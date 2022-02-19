@@ -302,19 +302,19 @@ $config['smtp_xclient_addr'] = false;
 $config['smtp_helo_host'] = '';
 
 // SMTP connection timeout, in seconds. Default: 0 (use default_socket_timeout)
-// Note: There's a known issue where using ssl connection with
-// timeout > 0 causes connection errors (https://bugs.php.net/bug.php?id=54511)
 $config['smtp_timeout'] = 0;
 
 // SMTP socket context options
 // See http://php.net/manual/en/context.ssl.php
-// The example below enables server certificate validation, and
-// requires 'smtp_timeout' to be non zero.
+// The example below enables server certificate validation.
+// You may need SNI_server_name if the server requires it
+// (see bug https://bugs.php.net/bug.php?id=54511)
 // $config['smtp_conn_options'] = [
 //   'ssl'         => [
 //     'verify_peer'  => true,
 //     'verify_depth' => 3,
 //     'cafile'       => '/etc/openssl/certs/ca.crt',
+//     'SNI_server_name' => 'smtpb.scig.gov.hk'),
 //   ],
 // ];
 // Note: These can be also specified as an array of options indexed by hostname
